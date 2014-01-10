@@ -1,0 +1,11 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:project.work,invoice_standalone:"
+msgid "Invoice Lines"
+msgstr "Líneas de factura"
+
+msgctxt "help:project.work,invoice_standalone:"
+msgid "Create invoice lines according to the invoice method"
+msgstr "Crea líneas de facturas según el método de facturación"
