@@ -15,9 +15,10 @@ class Work:
     __name__ = 'project.work'
     invoice_standalone = fields.Boolean('Invoice Lines',
         states={
-            'invisible': Eval('invoice_method') == 'manual',
+            'invisible': ((Eval('invoice_method') == 'manual')
+                | (Eval('type') != 'project')),
             },
-        depends=['invoice_method'],
+        depends=['invoice_method', 'type'],
         help='Create invoice lines according to the invoice method')
 
     @classmethod
