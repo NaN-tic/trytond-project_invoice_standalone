@@ -27,7 +27,6 @@ class Work:
         '''Create invoice or invoice lines'''
         pool = Pool()
         Invoice = pool.get('account.invoice')
-        InvoiceLine = pool.get('account.invoice.line')
 
         for work in works:
             if work.invoice_standalone: #create invoice lines
@@ -50,24 +49,9 @@ class Work:
                         invoice.party = work.party
 
                         invoice_line = work._get_invoice_line(key, invoice, lines)
+                        invoice_line.invoice_type = 'out_invoice'
                         invoice_line.party = work.party
-
-                        #create new object because _get_invoice_line don't pass context
-                        #and invoice field is required
-                        invoiceline = InvoiceLine()
-                        invoiceline.party = work.party
-                        invoiceline.product = invoice_line.product
-                        invoiceline.description = invoice_line.description
-                        invoiceline.unit_price = invoice_line.unit_price
-                        invoiceline.unit = invoice_line.unit
-                        invoiceline.account = invoice_line.account
-                        invoiceline.taxes = invoice_line.taxes
-                        if hasattr(invoice_line, 'note'):
-                            invoiceline.note = invoice_line.note
-                        invoiceline.type = 'line'
-                        invoiceline.invoice_type = 'out_invoice'
-                        invoiceline.quantity = invoice_line.quantity
-                        invoiceline.save()
+                        invoice_line.save()
 
                     origins = {}
                     for line in lines:
@@ -75,7 +59,7 @@ class Work:
                         origins.setdefault(origin.__class__, []).append(origin)
                     for klass, records in origins.iteritems():
                         klass.write(records, {
-                                'invoice_line': invoiceline.id,
+                                'invoice_line': invoice_line.id,
                                 })
             else: #create invoice + lines
                 super(Work, cls).invoice(works)
