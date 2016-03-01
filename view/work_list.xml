@@ -4,6 +4,7 @@ The COPYRIGHT file at the top level of this repository contains the full copyrig
 <data>
     <xpath expr="/tree/field[@name='total_effort']" position="after">
         <field name="duration_to_invoice"/>
+        <field name="project_invoice_method"/>
         <button name="invoice" string="Invoice" tree_invisible="1"/>
     </xpath>
 </data>
