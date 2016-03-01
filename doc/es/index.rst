@@ -2,5 +2,10 @@
 Proyecto. Generación de líneas de factura
 =========================================
 
-En la generación de facturas a partir de proyectos le permite en vez de crear la factura, sólo genere las
-líneas para después facturar estas líneas cuando se desee.
+Permite genera líneas de factura en lugar de facturas desde proyectos,
+configurable en cada proyecto. Las líneas de factura pueden facturarse
+posteriormente cuando se desee, junto con otras líneas provenientes de otras
+áreas de gestión.
+
+Añade campo 'Tiempo pendiente de facturar' y la acción 'Facturar' en los
+listados de proyectos.

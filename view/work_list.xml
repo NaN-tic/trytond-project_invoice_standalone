@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<!-- This file is part stock_buttons module for Tryton.
+The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/tree/field[@name='total_effort']" position="after">
+        <field name="duration_to_invoice"/>
+        <button name="invoice" string="Invoice" tree_invisible="1"/>
+    </xpath>
+</data>
