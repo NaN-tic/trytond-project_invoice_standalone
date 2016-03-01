@@ -8,4 +8,8 @@ msgstr "Línies de factura"
 
 msgctxt "help:project.work,invoice_standalone:"
 msgid "Create invoice lines according to the invoice method"
-msgstr "Crea línies de factura segons el métode de facturació"
+msgstr "Crea línies de factura segons el mètode de facturació"
+
+msgctxt "view:project.work:"
+msgid "Invoice"
+msgstr "Factura"
