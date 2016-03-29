@@ -8,10 +8,10 @@ from trytond.transaction import Transaction
 from itertools import groupby
 
 __all__ = ['Work']
-__metaclass__ = PoolMeta
 
 
 class Work:
+    __metaclass__ = PoolMeta
     __name__ = 'project.work'
     invoice_standalone = fields.Boolean('Invoice Lines',
         states={
