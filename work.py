@@ -42,14 +42,14 @@ class Work:
                     key = dict(key)
 
                     with Transaction().set_context({
-                            'invoice_type': 'out_invoice',
+                            'invoice_type': 'out',
                             'standalone': True,
                             }):
                         invoice = Invoice()
                         invoice.party = work.party
 
                         invoice_line = work._get_invoice_line(key, invoice, lines)
-                        invoice_line.invoice_type = 'out_invoice'
+                        invoice_line.invoice_type = 'out'
                         invoice_line.party = work.party
                         invoice_line.save()
 
