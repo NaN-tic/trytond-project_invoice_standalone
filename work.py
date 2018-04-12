@@ -33,7 +33,7 @@ class Work:
                 if not work.party:
                     cls.raise_user_error('missing_party', (work.rec_name,))
 
-                invoice_lines = work._get_lines_to_invoice()
+                invoice_lines, uninvoiced_children = work._get_lines_to_invoice()
                 if not invoice_lines:
                     continue
                 for key, lines in groupby(invoice_lines,
@@ -63,4 +63,3 @@ class Work:
                                 })
             else: #create invoice + lines
                 super(Work, cls).invoice(works)
-                
