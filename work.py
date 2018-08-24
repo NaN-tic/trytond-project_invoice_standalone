@@ -10,8 +10,7 @@ from itertools import groupby
 __all__ = ['Work']
 
 
-class Work:
-    __metaclass__ = PoolMeta
+class Work(metaclass=PoolMeta):
     __name__ = 'project.work'
     invoice_standalone = fields.Boolean('Invoice Lines',
         states={
@@ -57,7 +56,7 @@ class Work:
                     for line in lines:
                         origin = line['origin']
                         origins.setdefault(origin.__class__, []).append(origin)
-                    for klass, records in origins.iteritems():
+                    for klass, records in origins.items():
                         klass.write(records, {
                                 'invoice_line': invoice_line.id,
                                 })
