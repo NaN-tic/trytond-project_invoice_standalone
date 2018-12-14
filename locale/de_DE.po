@@ -1,0 +1,16 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:project.work,invoice_standalone:"
+msgid "Invoice Lines"
+msgstr "Rechnungspositionen"
+
+msgctxt "help:project.work,invoice_standalone:"
+msgid "Create invoice lines according to the invoice method"
+msgstr ""
+"Erstelle nur einzelne Rechnungspositionen ohne Zuordnung zu einer Rechnung"
+
+msgctxt "view:project.work:"
+msgid "Invoice"
+msgstr "Rechnung"
