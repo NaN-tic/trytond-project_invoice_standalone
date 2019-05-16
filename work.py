@@ -1,11 +1,13 @@
-#This file is part project_invoice_description module for Tryton.
-#The COPYRIGHT file at the top level of this repository contains
-#the full copyright notices and license terms.
+# This file is part project_invoice_description module for Tryton.
+# The COPYRIGHT file at the top level of this repository contains
+# the full copyright notices and license terms.
 from trytond.model import ModelView, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from itertools import groupby
+from trytond.i18n import gettext
+from trytond.exceptions import UserError
 
 __all__ = ['Work']
 
@@ -28,9 +30,10 @@ class Work(metaclass=PoolMeta):
         Invoice = pool.get('account.invoice')
 
         for work in works:
-            if work.invoice_standalone: #create invoice lines
+            if work.invoice_standalone:  # create invoice lines
                 if not work.party:
-                    cls.raise_user_error('missing_party', (work.rec_name,))
+                    raise UserError(gettext('project_invoice.msg_missing_party',
+                        work=work.rec_name))
 
                 invoice_lines, uninvoiced_children = work._get_lines_to_invoice()
                 if not invoice_lines:
@@ -60,5 +63,5 @@ class Work(metaclass=PoolMeta):
                         klass.write(records, {
                                 'invoice_line': invoice_line.id,
                                 })
-            else: #create invoice + lines
+            else:  # create invoice + lines
                 super(Work, cls).invoice(works)
