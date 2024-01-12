@@ -18,9 +18,7 @@ class Work(metaclass=PoolMeta):
         states={
             'invisible': ((Eval('invoice_method') == 'manual')
                 | (Eval('type') != 'project')),
-            },
-        depends=['invoice_method', 'type'],
-        help='Create invoice lines according to the invoice method')
+            }, help='Create invoice lines according to the invoice method')
 
     @classmethod
     @ModelView.button
