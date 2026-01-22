@@ -33,7 +33,7 @@ class Work(metaclass=PoolMeta):
                     raise UserError(gettext('project_invoice.msg_missing_party',
                         work=work.rec_name))
 
-                invoice_lines, uninvoiced_children = work._get_lines_to_invoice()
+                invoice_lines = work._get_lines_to_invoice()
                 if not invoice_lines:
                     continue
                 for key, lines in groupby(invoice_lines,
